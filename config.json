@@ -1,0 +1,59 @@
+{
+    "title": "Adobe Vision Tour",
+    "url": "https://firefly.adobe.com/generate/image",
+    "darkMode": false,
+    "fields": [
+        {
+            "id": "animal",
+            "label": "Animal",
+            "type": "select",
+            "options": [
+                {"value": "a lion", "label": "Lion"},
+                {"value": "a tiger", "label": "Tiger"},
+                {"value": "a giraffe", "label": "Giraffe"},
+                {"value": "a penguin", "label": "Penguin"},
+                {"value": "a panda", "label": "Panda"},
+                {"value": "a zebra", "label": "Zebra"},
+                {"value": "a gorilla", "label": "Gorilla"},
+                {"value": "a kangaroo", "label": "Kangaroo"},
+                {"value": "a koala", "label": "Koala"}
+            ]
+        },
+        {
+            "id": "action",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                {"value": "sleeping in", "label": "Sleeping in"},
+                {"value": "playing in", "label": "Playing in"},
+                {"value": "swimming in", "label": "Swimming in"},
+                {"value": "climbing on", "label": "Climbing on"},
+                {"value": "jumping on", "label": "Jumping on"},
+                {"value": "resting at", "label": "Resting at"},
+                {"value": "eating at", "label": "Eating at"},
+                {"value": "hiding in", "label": "Hiding in"},
+                {"value": "running from", "label": "Running from"},
+                {"value": "watching from", "label": "Watching from"}
+            ]
+        },
+        {
+            "id": "place",
+            "label": "Place",
+            "type": "select",
+            "options": [
+                {"value": "the watering hole", "label": "The Watering Hole"},
+                {"value": "the tall grass", "label": "The Tall Grass"},
+                {"value": "the rocky outcrop", "label": "The Rocky Outcrop"},
+                {"value": "the shady tree", "label": "The Shady Tree"},
+                {"value": "the cool pond", "label": "The Cool Pond"},
+                {"value": "the feeding station", "label": "The Feeding Station"},
+                {"value": "the wooden platform", "label": "The Wooden Platform"},
+                {"value": "the bamboo grove", "label": "The Bamboo Grove"},
+                {"value": "the cave entrance", "label": "The Cave Entrance"},
+                {"value": "the viewing area", "label": "The Viewing Area"}
+            ]
+        }
+    ],
+    "storyTemplate": "${animal} is ${action} ${place}"
+}
+ 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Dark mode overrides */
+        body.dark-mode {
+            --spectrum-bg: var(--dark-bg);
+            --spectrum-text: var(--dark-text);
+            --spectrum-surface: var(--dark-surface);
+            --spectrum-border: var(--dark-border);
+            --spectrum-input-bg: var(--dark-input-bg);
+        }
+    </style>
+</head>
+<body class="{{darkModeClass}}">
+    <div class="container">
+        <button type="button" id="refreshButton" class="button icon-button" title="Reset Form">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+            </svg>
+        </button>
+        <h1>{{title}}</h1>
+        <form id="madlibForm">
+            {{formContent}}
+        </form>
+
+        <div id="result" class="result" style="display: none;">
+            <p id="storyText"></p>
+            <button id="copyButton" class="button primary">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        {{formJavaScript}}
+    </script>
+</body>
+</html> 

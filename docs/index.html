@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Adobe Vision Tour</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Dark mode overrides */
+        body.dark-mode {
+            --spectrum-bg: var(--dark-bg);
+            --spectrum-text: var(--dark-text);
+            --spectrum-surface: var(--dark-surface);
+            --spectrum-border: var(--dark-border);
+            --spectrum-input-bg: var(--dark-input-bg);
+        }
+    </style>
+</head>
+<body class="">
+    <div class="container">
+        <button type="button" id="refreshButton" class="button icon-button" title="Reset Form">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                <path d="M3 3v5h5"></path>
+            </svg>
+        </button>
+        <h1>Adobe Vision Tour</h1>
+        <form id="madlibForm">
+            
+            <div class="form-group">
+                <label for="animal">Animal</label>
+                <select id="animal" name="animal" onchange="updatePrompt()" required>
+                    <option value="">Select Animal</option>
+                    <option value="a lion">Lion</option><option value="a tiger">Tiger</option><option value="a giraffe">Giraffe</option><option value="a penguin">Penguin</option><option value="a panda">Panda</option><option value="a zebra">Zebra</option><option value="a gorilla">Gorilla</option><option value="a kangaroo">Kangaroo</option><option value="a koala">Koala</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="action">Action</label>
+                <select id="action" name="action" onchange="updatePrompt()" required>
+                    <option value="">Select Action</option>
+                    <option value="sleeping in">Sleeping in</option><option value="playing in">Playing in</option><option value="swimming in">Swimming in</option><option value="climbing on">Climbing on</option><option value="jumping on">Jumping on</option><option value="resting at">Resting at</option><option value="eating at">Eating at</option><option value="hiding in">Hiding in</option><option value="running from">Running from</option><option value="watching from">Watching from</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="place">Place</label>
+                <select id="place" name="place" onchange="updatePrompt()" required>
+                    <option value="">Select Place</option>
+                    <option value="the watering hole">The Watering Hole</option><option value="the tall grass">The Tall Grass</option><option value="the rocky outcrop">The Rocky Outcrop</option><option value="the shady tree">The Shady Tree</option><option value="the cool pond">The Cool Pond</option><option value="the feeding station">The Feeding Station</option><option value="the wooden platform">The Wooden Platform</option><option value="the bamboo grove">The Bamboo Grove</option><option value="the cave entrance">The Cave Entrance</option><option value="the viewing area">The Viewing Area</option>
+                </select>
+            </div>
+        </form>
+
+        <div id="result" class="result" style="display: none;">
+            <p id="storyText"></p>
+            <button id="copyButton" class="button primary">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        
+    const storyTemplate = "${animal} is ${action} ${place}";
+    
+    function updatePrompt() {
+        let story = storyTemplate;
+        story = story.replace(new RegExp("\\${animal}", "g"), document.getElementById("animal").value || "_____");
+story = story.replace(new RegExp("\\${action}", "g"), document.getElementById("action").value || "_____");
+story = story.replace(new RegExp("\\${place}", "g"), document.getElementById("place").value || "_____");
+        document.getElementById('storyText').textContent = story;
+
+        // Check if all required fields are filled
+        const allFieldsFilled = document.getElementById('animal').value.trim() !== '' && document.getElementById('action').value.trim() !== '' && document.getElementById('place').value.trim() !== '';
+
+        // Show/hide the result section based on field completion
+        document.getElementById('result').style.display = allFieldsFilled ? 'block' : 'none';
+    }
+
+    // Initial update
+    window.onload = updatePrompt;
+
+    document.getElementById('madlibForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        updatePrompt();
+        
+        
+        // Wait 2 seconds before opening the URL in the Firefly window
+        setTimeout(() => {
+            window.open('https://firefly.adobe.com/generate/image', 'Firefly');
+        }, 2000);
+    });
+
+    document.getElementById('refreshButton').addEventListener('click', function() {
+        document.getElementById('madlibForm').reset();
+        updatePrompt();
+    });
+
+    document.getElementById('copyButton').addEventListener('click', function() {
+        const storyText = document.getElementById('storyText').textContent;
+        navigator.clipboard.writeText(storyText).then(() => {
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+                this.textContent = 'Copy to Clipboard';
+            }, 2000);
+        });
+    });
+
+    </script>
+</body>
+</html> 

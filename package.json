@@ -1,0 +1,13 @@
+{
+  "name": "firefly-madlib",
+  "version": "1.0.0",
+  "description": "A Mad Libs style story generator with clipboard functionality",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+} 
