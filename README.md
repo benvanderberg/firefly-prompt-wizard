@@ -1,4 +1,4 @@
-# Firefly Prompt Wizard
+# Firefly prompt wizard
 
 A simple web application that generates Firefly-themed Mad Libs stories based on user input. The application allows users to fill in various parts of speech and generates a story that can be copied to the clipboard.
 
