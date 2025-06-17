@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Vision Tour</title>
+    <title>Adobe prompt wizard</title>
     <link rel="stylesheet" href="/styles.css">
     <style>
         /* Dark mode overrides */
@@ -27,14 +27,14 @@
                 <path d="M3 3v5h5"></path>
             </svg>
         </button>
-        <h1>Vision Tour</h1>
+        <h1>Adobe prompt wizard</h1>
         <form id="madlibForm">
             
                 <div class="form-group">
                     <label for="animal">Animal</label>
                     <select id="animal" name="animal" onchange="updatePrompt()" required>
                         <option value="">Select Animal</option>
-                        <option value="Lion">Lion</option><option value="Tiger">Tiger</option><option value="Elephant">Elephant</option><option value="Giraffe">Giraffe</option><option value="Penguin">Penguin</option><option value="Panda">Panda</option><option value="Zebra">Zebra</option><option value="Gorilla">Gorilla</option><option value="Kangaroo">Kangaroo</option><option value="Koala">Koala</option>
+                        <option value="a lion">Lion</option><option value="a tiger">Tiger</option><option value="a giraffe">Giraffe</option><option value="a penguin">Penguin</option><option value="a panda">Panda</option><option value="a zebra">Zebra</option><option value="a gorilla">Gorilla</option><option value="a kangaroo">Kangaroo</option><option value="a koala">Koala</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -61,7 +61,7 @@
 
     <script>
         
-        const storyTemplate = "An ${animal} is ${action} ${place}";
+        const storyTemplate = "${animal} is ${action} ${place}";
         
         function updatePrompt() {
             let story = storyTemplate;
